@@ -23,7 +23,6 @@ const Posts = () => {
         <input type="text" placeholder="enter post description" onChange={(e)=>setDescription(e.target.value)} value={description} />
         <button 
         disabled={title==="" ||description==="" }
-
         onClick={()=>{
             dispatch(addPost( {id:posts.length+1,title,description}))
             setTitle("")
@@ -47,7 +46,10 @@ const Posts = () => {
                 (<>
                 <input type="text" placeholder="enter post title" onChange={(e)=>setUpdateTitle(e.target.value)} />        
                 <input type="text" placeholder="enter post description" onChange={(e)=>setUpdatedDescription(e.target.value)}/>
-                <button onClick={()=>{
+                <button
+                disabled={updatedTitle==="" ||updatedDescription==="" }
+
+                onClick={()=>{    
                     dispatch(editPost({id:post.id,title:updatedTitle,description:updatedDescription}))
                     setEdit(false)
                 }}> update Post</button>
